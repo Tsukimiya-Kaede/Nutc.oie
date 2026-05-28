@@ -646,26 +646,32 @@
       font-weight: 900;
     }
 
-    .embed-placeholder {
-      min-height: 360px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      border: 1px dashed rgba(255, 255, 255, .20);
-      border-radius: 24px;
-      background: rgba(0, 0, 0, .18);
-      padding: 24px;
-      color: var(--muted);
-      line-height: 1.75;
+    .form-section {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 0 0 86px;
+      scroll-margin-top: 96px;
     }
-    .embed-placeholder code {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .09);
-      color: var(--gold-2);
-      font-size: 12px;
+    .form-section h2 {
+      margin: 0 0 20px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .google-form-wrap {
+      overflow: hidden;
+      border: 1px solid rgba(62, 231, 216, .18);
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(62, 231, 216, .10), rgba(255, 255, 255, .06));
+      box-shadow: var(--shadow);
+    }
+    .google-form-wrap iframe {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      min-height: 2720px;
+      border: 0;
+      background: #fff;
     }
 
     footer {
@@ -784,6 +790,7 @@
 
     @media (max-width: 640px) {
       .container { width: min(100% - 26px, var(--max)); }
+      .form-section { width: min(100% - 26px, var(--max)); }
       .hero { padding-top: 48px; }
       .stats, .grid-2, .compare, .form-grid { grid-template-columns: 1fr; }
       .countdown-grid { grid-template-columns: repeat(2, 1fr); }
@@ -811,7 +818,7 @@
         <a href="#project">企業專題</a>
         <a href="#schedule">開班資訊</a>
         <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="#register">我要報名</a>
+        <a class="nav-cta" href="#signup">我要報名</a>
       </nav>
       <button class="hamburger" id="menuBtn" aria-label="開啟選單">☰</button>
     </div>
@@ -827,7 +834,7 @@
             AI 智慧行銷與商業應用實戰養成班，聚焦零售、餐飲與服務業場域。從生成式 AI、數位行銷、數據分析到企業專題實作，陪你把工具能力轉成可展示、可媒合、可落地的實戰成果。
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#register">我要報名 →</a>
+            <a class="btn btn-primary" href="#signup">我要報名 →</a>
             <a class="btn btn-secondary" href="#curriculum">先看課程架構</a>
             <button class="btn btn-secondary" type="button" data-open-modal>查看完整課綱</button>
           </div>
@@ -997,7 +1004,7 @@
 
         <div class="cta-row" style="justify-content:center; margin-top:26px;">
           <button class="btn btn-secondary" type="button" data-open-modal>查看完整課綱清單</button>
-          <a class="btn btn-primary" href="#register">直接前往報名</a>
+          <a class="btn btn-primary" href="#signup">直接前往報名</a>
         </div>
       </div>
     </section>
@@ -1153,13 +1160,22 @@
           </div>
         </div>
 
-        <div class="embed-placeholder" style="margin-top:18px;">
-          <div>
-            <strong style="color:var(--text); font-size:20px;">Google 表單嵌入區</strong><br>
-            若已建立正式報名 Google Form，可將 iframe 貼到此處取代本區塊；或保留上方表單並串接後端。
-            <br><code>&lt;iframe src="你的 Google Form 連結"&gt;&lt;/iframe&gt;</code>
-          </div>
-        </div>
+      </div>
+    </section>
+
+    <section id="signup" class="form-section">
+      <h2>立即報名</h2>
+
+      <div class="google-form-wrap">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSel7m1J2JQRbzC-9Cs51l2-G7_L4TNYR_lLuFpSfk9EI_bw2w/viewform?embedded=true"
+          width="640"
+          height="2720"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0">
+          test
+        </iframe>
       </div>
     </section>
   </main>
@@ -1181,7 +1197,7 @@
 
   <div class="float-cta" aria-label="快速操作">
     <a class="float-secondary" href="#faq">FAQ</a>
-    <a class="float-primary" href="#register">我要報名</a>
+    <a class="float-primary" href="#signup">我要報名</a>
   </div>
 
   <div class="modal" id="syllabusModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">

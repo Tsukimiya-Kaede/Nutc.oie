@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>青年 AI 實戰養成班｜AI 智慧行銷與商業應用實戰養成班</title>
+  <meta name="description" content="國立臺中科技大學 115年度強化服務業人才韌性計畫｜AI 智慧行銷與商業應用實戰養成班，一頁式課程報名網站。" />
+  <style>
+    :root {
+      --bg: #070a12;
+      --bg-2: #0d1322;
+      --panel: rgba(255, 255, 255, .075);
+      --panel-strong: rgba(255, 255, 255, .12);
+      --line: rgba(255, 255, 255, .16);
+      --text: #eef4ff;
+      --muted: #aab6c8;
+      --gold: #f7c873;
+      --gold-2: #ffdf9a;
+      --cyan: #3ee7d8;
+      --green: #84f29a;
+      --pink: #ff7ab6;
+      --danger: #ff6b6b;
+      --shadow: 0 24px 90px rgba(0, 0, 0, .38);
+      --radius: 28px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 14% 8%, rgba(62, 231, 216, .20), transparent 26rem),
+        radial-gradient(circle at 82% 10%, rgba(247, 200, 115, .18), transparent 28rem),
+        radial-gradient(circle at 58% 72%, rgba(255, 122, 182, .11), transparent 32rem),
+        linear-gradient(180deg, #050711 0%, #09101e 45%, #050711 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .12;
+      z-index: -1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(7, 10, 18, .88), rgba(7, 10, 18, .58));
+      border-bottom: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .nav {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 260px;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      color: #061019;
+      background: linear-gradient(135deg, var(--gold), var(--cyan));
+      box-shadow: 0 12px 30px rgba(62, 231, 216, .15);
+      font-weight: 1000;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+      margin-top: 2px;
+      letter-spacing: .04em;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: rgba(238, 244, 255, .82);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .links a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: .2s ease;
+    }
+
+    .links a:hover, .links a.active {
+      color: var(--text);
+      background: rgba(255, 255, 255, .10);
+    }
+
+    .nav-cta {
+      padding: 11px 16px !important;
+      color: #071018 !important;
+      background: linear-gradient(135deg, var(--gold), var(--cyan)) !important;
+      font-weight: 900;
+      box-shadow: 0 12px 30px rgba(247, 200, 115, .14);
+    }
+
+    .hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .08);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      align-items: center;
+      padding: 76px 0 54px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(247, 200, 115, .28);
+      border-radius: 999px;
+      background: rgba(247, 200, 115, .08);
+      color: var(--gold-2);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 0 rgba(132, 242, 154, .7);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 12px rgba(132, 242, 154, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(132, 242, 154, 0); }
+    }
+
+    h1 {
+      margin: 22px 0 0;
+      font-size: clamp(44px, 6vw, 86px);
+      line-height: .98;
+      letter-spacing: -0.06em;
+      font-weight: 1000;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, #fff 0%, var(--gold) 35%, var(--cyan) 72%, #fff 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-lead {
+      margin: 22px 0 0;
+      color: #c7d4e7;
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.72;
+      max-width: 760px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      color: var(--text);
+      background: rgba(255, 255, 255, .08);
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, .30); }
+    .btn-primary {
+      color: #071018;
+      background: linear-gradient(135deg, var(--gold), var(--cyan));
+      border-color: transparent;
+      box-shadow: 0 20px 50px rgba(62, 231, 216, .18);
+    }
+
+    .btn-secondary { background: rgba(255, 255, 255, .06); }
+
+    .hero-card {
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .055));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -70px -90px auto auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(62, 231, 216, .24), transparent 65%);
+    }
+
+    .status {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      position: relative;
+    }
+
+    .status strong { font-size: 22px; }
+    .status span { color: var(--muted); font-size: 13px; display: block; margin-top: 4px; }
+
+    .badge {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(132, 242, 154, .12);
+      color: var(--green);
+      font-weight: 900;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+    }
+
+    .meta-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .09);
+    }
+
+    .meta-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(247, 200, 115, .12);
+    }
+
+    .meta-item b { display: block; margin-bottom: 3px; }
+    .meta-item span { color: var(--muted); line-height: 1.55; font-size: 14px; }
+
+    .countdown {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid rgba(62, 231, 216, .20);
+      border-radius: 24px;
+      background: rgba(62, 231, 216, .07);
+    }
+
+    .countdown-title {
+      color: var(--cyan);
+      font-weight: 900;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .timebox {
+      text-align: center;
+      padding: 12px 8px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, .22);
+      border: 1px solid rgba(255, 255, 255, .08);
+    }
+    .timebox strong { display: block; font-size: 24px; }
+    .timebox span { font-size: 12px; color: var(--muted); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 22px 0 0;
+    }
+
+    .stat {
+      padding: 18px 14px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .10);
+      text-align: center;
+    }
+    .stat strong { font-size: clamp(26px, 4vw, 44px); letter-spacing: -.04em; }
+    .stat span { display: block; color: var(--muted); margin-top: 6px; font-size: 13px; }
+
+    section { padding: 92px 0; position: relative; }
+    .section-head {
+      display: grid;
+      grid-template-columns: .74fr 1fr;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      font-weight: 950;
+      letter-spacing: .12em;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(32px, 4.8vw, 58px);
+      line-height: 1.06;
+      letter-spacing: -.045em;
+    }
+    .section-head p, .muted {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .card-grid { display: grid; gap: 16px; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card {
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .095), rgba(255, 255, 255, .052));
+      padding: 24px;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, .18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -60px auto;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(247, 200, 115, .10), transparent 70%);
+      pointer-events: none;
+    }
+
+    .num {
+      color: var(--cyan);
+      font-weight: 1000;
+      font-size: 13px;
+      letter-spacing: .12em;
+      margin-bottom: 22px;
+    }
+    .card h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.02em; }
+    .card p { color: var(--muted); line-height: 1.75; margin: 0; }
+    .card ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 9px; color: #cbd7e9; }
+    .card li { position: relative; padding-left: 20px; line-height: 1.55; }
+    .card li::before { content: "✦"; position: absolute; left: 0; color: var(--gold); }
+
+    .path {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .path-step {
+      min-height: 176px;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .065);
+      position: relative;
+    }
+    .path-step small { color: var(--muted); font-weight: 850; letter-spacing: .08em; }
+    .path-step h3 { margin: 20px 0 8px; font-size: 28px; color: var(--gold); }
+    .path-step p { margin: 0; color: var(--muted); line-height: 1.6; font-size: 14px; }
+
+    .check-layout {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .eligibility-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .eligibility-item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .07);
+    }
+    .check-dot {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #071018;
+      background: linear-gradient(135deg, var(--gold), var(--cyan));
+      font-weight: 1000;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .compare .good { border-color: rgba(132, 242, 154, .22); }
+    .compare .bad { border-color: rgba(255, 107, 107, .22); }
+    .good .num { color: var(--green); }
+    .bad .num { color: var(--danger); }
+
+    .curriculum {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .phase {
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, .13);
+      background: rgba(255, 255, 255, .075);
+      padding: 26px;
+    }
+    .phase-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+    .phase h3 { margin: 0; font-size: 26px; }
+    .phase-label {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(247, 200, 115, .12);
+      color: var(--gold-2);
+      font-weight: 900;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .modules { display: grid; gap: 10px; margin-top: 18px; }
+    .module {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .09);
+    }
+    .module:last-child { border-bottom: 0; }
+    .module-time {
+      min-width: 54px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      color: var(--cyan);
+      background: rgba(62, 231, 216, .10);
+      font-weight: 1000;
+      font-size: 12px;
+      text-align: center;
+    }
+    .module b { display: block; margin-bottom: 4px; }
+    .module span { color: var(--muted); line-height: 1.55; font-size: 14px; }
+
+    .company-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .tag {
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .07);
+      color: #d9e5f6;
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .schedule-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .class-card {
+      padding: 22px;
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, .13);
+      background: linear-gradient(180deg, rgba(62, 231, 216, .10), rgba(255, 255, 255, .055));
+    }
+    .class-card h3 { margin: 0 0 14px; font-size: 25px; }
+    .class-meta { display: grid; gap: 10px; color: #c8d5e7; }
+    .class-meta span { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(255,255,255,.09); padding-top: 10px; }
+    .class-meta b { color: var(--text); }
+
+    .faq { display: grid; gap: 12px; }
+    .faq-item {
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .07);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border: 0;
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      font-weight: 950;
+    }
+    .faq-q span:last-child { color: var(--gold); font-size: 22px; }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .28s ease;
+    }
+    .faq-a p {
+      margin: 0;
+      padding: 0 20px 18px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-a { max-height: 220px; }
+
+    .register-wrap {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .form-card {
+      border: 1px solid rgba(62, 231, 216, .18);
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(62, 231, 216, .10), rgba(255, 255, 255, .06));
+      padding: 24px;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { display: grid; gap: 7px; margin-bottom: 12px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: #dce7f7; font-weight: 850; font-size: 13px; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 16px;
+      background: rgba(0, 0, 0, .20);
+      color: var(--text);
+      padding: 13px 14px;
+      outline: none;
+    }
+    textarea { min-height: 112px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: rgba(62, 231, 216, .55); }
+    .submit-note { color: var(--muted); font-size: 13px; line-height: 1.65; margin-top: 12px; }
+    .success {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      color: var(--green);
+      background: rgba(132, 242, 154, .10);
+      border: 1px solid rgba(132, 242, 154, .18);
+      font-weight: 900;
+    }
+
+    .embed-placeholder {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border: 1px dashed rgba(255, 255, 255, .20);
+      border-radius: 24px;
+      background: rgba(0, 0, 0, .18);
+      padding: 24px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .embed-placeholder code {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .09);
+      color: var(--gold-2);
+      font-size: 12px;
+    }
+
+    footer {
+      padding: 44px 0 86px;
+      border-top: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(0, 0, 0, .18);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .footer-grid b { color: var(--text); }
+
+    .float-cta {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(7, 10, 18, .78);
+      border: 1px solid rgba(255, 255, 255, .15);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .28);
+    }
+    .float-cta a { padding: 11px 14px; border-radius: 999px; font-weight: 950; font-size: 14px; }
+    .float-primary { color: #071018; background: linear-gradient(135deg, var(--gold), var(--cyan)); }
+    .float-secondary { background: rgba(255, 255, 255, .09); }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      z-index: 80;
+      padding: 22px;
+      background: rgba(0, 0, 0, .62);
+      backdrop-filter: blur(10px);
+    }
+    .modal.open { display: grid; }
+    .modal-panel {
+      width: min(960px, 100%);
+      max-height: 84vh;
+      overflow: auto;
+      border-radius: 30px;
+      background: #0b1120;
+      border: 1px solid rgba(255, 255, 255, .14);
+      box-shadow: var(--shadow);
+    }
+    .modal-head {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      background: rgba(11, 17, 32, .92);
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      backdrop-filter: blur(12px);
+    }
+    .modal-head h3 { margin: 0; }
+    .close-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: rgba(255, 255, 255, .08);
+      color: var(--text);
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 22px;
+    }
+    .modal-body { padding: 22px; }
+    .syllabus-list { display: grid; gap: 10px; }
+    .syllabus-row {
+      display: grid;
+      grid-template-columns: 78px 1fr 70px;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .09);
+    }
+    .syllabus-row small { color: var(--cyan); font-weight: 950; }
+    .syllabus-row b { color: var(--text); }
+    .syllabus-row span { color: var(--gold-2); text-align: right; font-weight: 950; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .section-head, .check-layout, .register-wrap, .footer-grid { grid-template-columns: 1fr; }
+      .stats, .path { grid-template-columns: repeat(2, 1fr); }
+      .grid-3, .grid-4, .curriculum, .schedule-card { grid-template-columns: 1fr; }
+      .links {
+        display: none;
+        position: absolute;
+        top: 74px;
+        left: 20px;
+        right: 20px;
+        padding: 14px;
+        border-radius: 22px;
+        background: rgba(8, 12, 22, .96);
+        border: 1px solid rgba(255, 255, 255, .14);
+        box-shadow: var(--shadow);
+      }
+      .links.open { display: grid; justify-content: stretch; }
+      .links a { display: block; }
+      .hamburger { display: block; }
+      .brand { min-width: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 26px, var(--max)); }
+      .hero { padding-top: 48px; }
+      .stats, .grid-2, .compare, .form-grid { grid-template-columns: 1fr; }
+      .countdown-grid { grid-template-columns: repeat(2, 1fr); }
+      .path { grid-template-columns: 1fr; }
+      .float-cta { left: 12px; right: 12px; justify-content: center; }
+      .float-cta a { flex: 1; text-align: center; }
+      .syllabus-row { grid-template-columns: 1fr; }
+      .syllabus-row span { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="回到首頁">
+        <span class="logo">AI</span>
+        <span>青年 AI 實戰養成班<small>國立臺中科技大學｜創新創業教學及產研辦公室</small></span>
+      </a>
+      <nav class="links" id="navLinks" aria-label="主導覽">
+        <a href="#why">核心理念</a>
+        <a href="#eligibility">報名資格</a>
+        <a href="#curriculum">課程架構</a>
+        <a href="#project">企業專題</a>
+        <a href="#schedule">開班資訊</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#register">我要報名</a>
+      </nav>
+      <button class="hamburger" id="menuBtn" aria-label="開啟選單">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> 115年度強化服務業人才韌性計畫</div>
+          <h1>不是只學 AI，<br><span class="gradient-text">是把 AI 做成你的職場作品。</span></h1>
+          <p class="hero-lead">
+            AI 智慧行銷與商業應用實戰養成班，聚焦零售、餐飲與服務業場域。從生成式 AI、數位行銷、數據分析到企業專題實作，陪你把工具能力轉成可展示、可媒合、可落地的實戰成果。
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#register">我要報名 →</a>
+            <a class="btn btn-secondary" href="#curriculum">先看課程架構</a>
+            <button class="btn btn-secondary" type="button" data-open-modal>查看完整課綱</button>
+          </div>
+          <div class="stats" aria-label="課程重點數字">
+            <div class="stat"><strong data-count="240">0</strong><span>小時密集培訓</span></div>
+            <div class="stat"><strong data-count="64">0</strong><span>總培訓名額</span></div>
+            <div class="stat"><strong data-count="75">0</strong><span>% 就業媒合目標</span></div>
+            <div class="stat"><strong data-count="2">0</strong><span>班次招生</span></div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="課程摘要">
+          <div class="status">
+            <div>
+              <strong>AI 智慧行銷與商業應用</strong>
+              <span>120 小時 AI 應用課程 + 120 小時企業專題實作</span>
+            </div>
+            <span class="badge">招生中</span>
+          </div>
+
+          <div class="meta-list">
+            <div class="meta-item"><span class="meta-icon">📍</span><div><b>上課地點</b><span>國立臺中科技大學｜臺中市北區三民路三段129號</span></div></div>
+            <div class="meta-item"><span class="meta-icon">👥</span><div><b>招生對象</b><span>18–35 歲本國籍青年；大專校院副學士以上；應屆畢業生或待業者。</span></div></div>
+            <div class="meta-item"><span class="meta-icon">🧭</span><div><b>訓練方向</b><span>AI 行銷素材、AI Agent 客服、Power BI 數據儀表板、智慧銷售與門市營運。</span></div></div>
+            <div class="meta-item"><span class="meta-icon">💬</span><div><b>聯絡窗口</b><span>楊先生｜04-22196475｜pj0225@nutc.edu.tw</span></div></div>
+          </div>
+
+          <div class="countdown" aria-label="倒數計時">
+            <div class="countdown-title"><span>⏰ 距離第一班預計開課</span><span>2026 / 07 / 01</span></div>
+            <div class="countdown-grid">
+              <div class="timebox"><strong id="d">--</strong><span>天</span></div>
+              <div class="timebox"><strong id="h">--</strong><span>時</span></div>
+              <div class="timebox"><strong id="m">--</strong><span>分</span></div>
+              <div class="timebox"><strong id="s">--</strong><span>秒</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">WHY THIS CLASS</div>
+            <h2>學 AI 工具很多，真正缺的是把工具用在企業現場。</h2>
+          </div>
+          <p>本班以「AI 實戰應用、企業專題解題、就業媒合接軌」為核心，把行銷內容生成、顧客互動、銷售分析、營運報表與智慧客服整合成一套可放進履歷的作品集。</p>
+        </div>
+
+        <div class="card-grid grid-3">
+          <article class="card">
+            <div class="num">01 · PAIN</div>
+            <h3>行銷內容產出太慢</h3>
+            <p>企業需要能快速產出社群圖文、商品文案、短影音腳本與廣告素材的人才，而不是只會按工具按鈕的人。</p>
+          </article>
+          <article class="card">
+            <div class="num">02 · PAIN</div>
+            <h3>數據看得到，決策用不上</h3>
+            <p>學員將學習用 Excel、Power BI、GA4 與 AI 工具整理資料、產出儀表板，讓行銷與營運決策有依據。</p>
+          </article>
+          <article class="card">
+            <div class="num">03 · PAIN</div>
+            <h3>服務業缺 AI 落地人才</h3>
+            <p>透過合作企業真實命題，學員練習把 AI Agent、智慧客服、商品推薦與顧客經營流程導入服務場域。</p>
+          </article>
+        </div>
+
+        <div class="path" aria-label="培訓到媒合流程">
+          <div class="path-step"><small>STEP 01</small><h3>選</h3><p>資格審查與面試徵選，確認學習動機與企業職缺適配度。</p></div>
+          <div class="path-step"><small>STEP 02</small><h3>學</h3><p>AI 基礎、行銷設計、數據分析、iPAS 證照輔導。</p></div>
+          <div class="path-step"><small>STEP 03</small><h3>做</h3><p>合作企業出題，學員分組解題，業師與企業導師共同指導。</p></div>
+          <div class="path-step"><small>STEP 04</small><h3>秀</h3><p>完成專題報告、數位產出、Demo 與成果發表。</p></div>
+          <div class="path-step"><small>STEP 05</small><h3>合</h3><p>以專題成果作為作品集，銜接企業面試與就業媒合。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="eligibility">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">ELIGIBILITY</div>
+            <h2>先確認你是否符合報名資格。</h2>
+          </div>
+          <p>本班採審核制，通過書面資格初審後，將依企業職缺適配度、學習意願與溝通能力進行徵選。</p>
+        </div>
+
+        <div class="check-layout">
+          <article class="card">
+            <div class="num">報名條件</div>
+            <h3>符合以下條件者，歡迎報名</h3>
+            <div class="eligibility-list">
+              <div class="eligibility-item"><span class="check-dot">✓</span><div><b>年齡</b><p>年滿 18 歲至 35 歲（含）之本國籍青年。</p></div></div>
+              <div class="eligibility-item"><span class="check-dot">✓</span><div><b>學歷</b><p>具我國大專校院副學士（含二專、五專）以上學歷。</p></div></div>
+              <div class="eligibility-item"><span class="check-dot">✓</span><div><b>身分</b><p>應屆畢業生或待業者，並有意投入商業服務業。</p></div></div>
+              <div class="eligibility-item"><span class="check-dot">✓</span><div><b>先備能力</b><p>具基本電腦操作、文書與簡報能力；無須程式基礎，但需願意動手學 AI 工具。</p></div></div>
+            </div>
+          </article>
+
+          <div class="compare">
+            <article class="card good">
+              <div class="num">✓ 適合你</div>
+              <h3>我們在等的學員</h3>
+              <ul>
+                <li>剛畢業或待業中，想補上可展示的實作能力</li>
+                <li>對 AI、數位行銷、資料分析或服務業應用有興趣</li>
+                <li>願意完成 240 小時密集訓練與團隊專題</li>
+                <li>希望把專題成果做成面試作品集</li>
+                <li>能配合出席率與考核規定</li>
+              </ul>
+            </article>
+            <article class="card bad">
+              <div class="num">✕ 請先想清楚</div>
+              <h3>可能不適合</h3>
+              <ul>
+                <li>只想短期體驗，不願投入專題產出</li>
+                <li>無法配合課程時段與出席要求</li>
+                <li>不願分組合作或接受企業導師回饋</li>
+                <li>期待只聽課不實作、不發表</li>
+                <li>已同時接受其他政府相關人才培訓補助</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="curriculum">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">CURRICULUM</div>
+            <h2>120 小時打底，120 小時進企業題目實戰。</h2>
+          </div>
+          <p>課程分為「次產業 AI 應用與職場核心素養」與「企業專題實作與數據決策」兩階段，從工具能力一路推進到企業痛點解決方案。</p>
+        </div>
+
+        <div class="curriculum">
+          <article class="phase">
+            <div class="phase-head">
+              <div><h3>第一階段｜AI 工具與數位行銷基礎</h3><p class="muted">建立 AI 基礎知能、工具操作、數位內容與數據應用能力。</p></div>
+              <span class="phase-label">120 hr</span>
+            </div>
+            <div class="modules">
+              <div class="module"><span class="module-time">8h</span><div><b>AI 資訊安全與生成式 AI 倫理</b><span>資料保護、個資、著作權與安全使用準則。</span></div></div>
+              <div class="module"><span class="module-time">16h</span><div><b>iPAS AI 應用規劃師認證輔導</b><span>AI 基礎、資料流程、No Code / Low Code、導入評估與風險管理。</span></div></div>
+              <div class="module"><span class="module-time">32h</span><div><b>AI 行銷與智慧銷售模組</b><span>ChatGPT、Gemini、Canva、商品視覺、銷售文案、Meta 投放與社群經營。</span></div></div>
+              <div class="module"><span class="module-time">48h</span><div><b>數據分析與智慧營運模組</b><span>Excel 資料擷取、NotebookLM、Power BI、GA4、智慧物流、商業數據分析。</span></div></div>
+              <div class="module"><span class="module-time">16h</span><div><b>ESG 與門市營運管理</b><span>服務業人才管理、智慧銷售流程、庫存與營運管理概念。</span></div></div>
+            </div>
+          </article>
+
+          <article class="phase">
+            <div class="phase-head">
+              <div><h3>第二階段｜企業專題實作與數據決策</h3><p class="muted">以合作企業命題為核心，完成可展示的 AI 導入成果。</p></div>
+              <span class="phase-label">120 hr</span>
+            </div>
+            <div class="modules">
+              <div class="module"><span class="module-time">24h</span><div><b>AI Agent 商業應用</b><span>建立客服知識庫、回覆腳本、商品推薦流程與顧客互動機制。</span></div></div>
+              <div class="module"><span class="module-time">24h</span><div><b>AI 創意行銷與短影音實戰</b><span>品牌文案、社群貼文、短影音腳本、廣告素材與視覺內容產出。</span></div></div>
+              <div class="module"><span class="module-time">32h</span><div><b>商業數據分析與智慧銷售</b><span>顧客分群、營運報表、銷售流程、門市決策與 Power BI 儀表板。</span></div></div>
+              <div class="module"><span class="module-time">40h</span><div><b>企業 AI 智慧銷售專題實作</b><span>市場與顧客分析、行銷內容應用、消費行為分析、門市營運決策、成果發表與就業媒合。</span></div></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-row" style="justify-content:center; margin-top:26px;">
+          <button class="btn btn-secondary" type="button" data-open-modal>查看完整課綱清單</button>
+          <a class="btn btn-primary" href="#register">直接前往報名</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">PROJECT</div>
+            <h2>企業出題，學員解題，作品就是面試材料。</h2>
+          </div>
+          <p>課程不是單向聽講，而是以合作企業真實情境作為專題題目，透過業師與企業導師雙師輔導，產出可落地的 AI 行銷、客服、數據或營運方案。</p>
+        </div>
+
+        <div class="card-grid grid-4">
+          <article class="card"><div class="num">OUTPUT 01</div><h3>AI 行銷素材包</h3><p>商品文案、社群貼文、短影音腳本、廣告標題與視覺素材。</p></article>
+          <article class="card"><div class="num">OUTPUT 02</div><h3>AI Agent 雛型</h3><p>客服知識庫、問答腳本、商品推薦流程與互動規則設定。</p></article>
+          <article class="card"><div class="num">OUTPUT 03</div><h3>Power BI 儀表板</h3><p>行銷成效、銷售漏斗、庫存與營運數據視覺化。</p></article>
+          <article class="card"><div class="num">OUTPUT 04</div><h3>企業導入建議書</h3><p>痛點分析、目標客群、工具導入流程、預期效益與簡報 Demo。</p></article>
+        </div>
+
+        <article class="card" style="margin-top:18px;">
+          <div class="num">PARTNERS</div>
+          <h3>合作企業與實作場域</h3>
+          <p>合作企業橫跨食品伴手禮、餐飲、旅宿、資訊軟體、數位行銷、機械製造、智慧零售與空間科技，讓學員練習在不同服務業場景快速理解問題、提出 AI 解方。</p>
+          <div class="company-strip" aria-label="合作企業列表">
+            <span class="tag">沃農士食品（阿聰師）</span>
+            <span class="tag">KAVA 珂汎國際</span>
+            <span class="tag">Taiping Blue 新育才</span>
+            <span class="tag">双云行銷</span>
+            <span class="tag">秦創科技</span>
+            <span class="tag">欣富順機械</span>
+            <span class="tag">國興資訊</span>
+            <span class="tag">福杉國際旅館管理顧問</span>
+            <span class="tag">黑糖家糖果工坊</span>
+            <span class="tag">阿杜皇家泰式料理集團</span>
+            <span class="tag">鴻鼎菓子</span>
+            <span class="tag">京越國際／有春茶館</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">SCHEDULE</div>
+            <h2>兩班招生，每班 32 人，額滿即開課。</h2>
+          </div>
+          <p>本頁時程為計畫書預計開班資訊，實際開課、報到與錄取通知仍以主辦單位及國立臺中科技大學公告為準。</p>
+        </div>
+
+        <div class="schedule-card">
+          <article class="class-card">
+            <h3>AI 智慧行銷與商業應用實戰養成 1 班</h3>
+            <div class="class-meta">
+              <span><b>上課期間</b> 2026/07/01 – 2026/08/31</span>
+              <span><b>培訓人數</b> 32 人</span>
+              <span><b>應用次產業</b> 零售業、餐飲業</span>
+              <span><b>課程時數</b> 120h AI 應用 + 120h 企業專題</span>
+            </div>
+          </article>
+          <article class="class-card">
+            <h3>AI 智慧行銷與商業應用實戰養成 2 班</h3>
+            <div class="class-meta">
+              <span><b>上課期間</b> 2026/07/15 – 2026/08/31</span>
+              <span><b>培訓人數</b> 32 人</span>
+              <span><b>應用次產業</b> 零售業、餐飲業</span>
+              <span><b>課程時數</b> 120h AI 應用 + 120h 企業專題</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">FAQ</div>
+            <h2>報名前，先把常見問題看完。</h2>
+          </div>
+          <p>以下內容可依正式招生簡章再微調，例如補助、說明會連結、正式報名平台與錄取通知流程。</p>
+        </div>
+
+        <div class="faq">
+          <div class="faq-item open">
+            <button class="faq-q" type="button"><span>我不是資訊科系，可以報名嗎？</span><span>＋</span></button>
+            <div class="faq-a"><p>可以。課程無須程式設計基礎，重點是願意學習 AI 工具、數位行銷、資料整理與企業問題解決。具服務業、商管、設計、行銷背景者也很適合。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button"><span>課程會學哪些 AI 工具？</span><span>＋</span></button>
+            <div class="faq-a"><p>課程規劃包含 ChatGPT、Gemini、NotebookLM、Canva、Excel、Power BI、GA4、Meta Ads Manager、Google Ads 等工具，並以合法授權、免費版、教育版或學校既有授權工具操作。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button"><span>完成課程需要達到什麼條件？</span><span>＋</span></button>
+            <div class="faq-a"><p>兩階段出席時數均須達 90% 以上，階段一需完成筆試與實作評量，階段二需交付專題成果報告並進行公開成果發表，通過後取得完訓資格。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button"><span>企業專題會做什麼？</span><span>＋</span></button>
+            <div class="faq-a"><p>學員將依合作企業命題進行分組，完成企業痛點分析、目標客群設定、AI 工具導入策略、行銷內容產出、數據分析報表或 AI Agent 雛型等成果。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button"><span>報名後是否等於錄取？</span><span>＋</span></button>
+            <div class="faq-a"><p>不是。本班採審核制，送出資料後將進行資格初審與徵選面試，錄取名單將另行通知。若正取未完成報到，將依備取順序遞補。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="register">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">REGISTRATION</div>
+            <h2>填寫報名 / 意向登記，我們將聯繫你。</h2>
+          </div>
+          <p>此區塊可直接改成 Google 表單 iframe，或串接學校正式報名系統。正式報名資料、簡章附件與個資告知文字，建議待主辦單位確認後替換。</p>
+        </div>
+
+        <div class="register-wrap">
+          <article class="card">
+            <div class="num">報名流程</div>
+            <h3>兩步驟完成申請</h3>
+            <ul>
+              <li><b>STEP 1｜填寫意向登記：</b>留下基本資料、班別意願、學經歷與參訓動機。</li>
+              <li><b>STEP 2｜資格審查與面試：</b>依年齡、學歷、身分與企業職缺適配度進行徵選。</li>
+              <li><b>STEP 3｜錄取通知與報到：</b>以 Email、電話或簡訊通知正備取與報到資料。</li>
+              <li><b>STEP 4｜開課與分組：</b>完成前測後進入 AI 工具課程與企業專題實作。</li>
+            </ul>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="mailto:pj0225@nutc.edu.tw?subject=青年AI實戰養成班報名諮詢">寄信詢問</a>
+              <a class="btn btn-secondary" href="tel:+886422196475">撥打電話</a>
+            </div>
+          </article>
+
+          <div class="form-card">
+            <form id="leadForm">
+              <div class="form-grid">
+                <div class="field"><label for="name">姓名</label><input id="name" name="name" type="text" placeholder="請輸入姓名" required></div>
+                <div class="field"><label for="phone">手機</label><input id="phone" name="phone" type="tel" placeholder="09xx-xxx-xxx" required></div>
+                <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="example@email.com" required></div>
+                <div class="field"><label for="class">欲報名班別</label><select id="class" name="class" required><option value="">請選擇</option><option>第 1 班｜2026/07/01 開課</option><option>第 2 班｜2026/07/15 開課</option><option>兩班皆可</option></select></div>
+                <div class="field"><label for="status">目前身分</label><select id="status" name="status" required><option value="">請選擇</option><option>應屆畢業生</option><option>待業者</option><option>其他，需進一步確認資格</option></select></div>
+                <div class="field"><label for="field">感興趣方向</label><select id="field" name="field"><option>AI 行銷內容</option><option>AI Agent 客服</option><option>Power BI 數據分析</option><option>智慧銷售與門市營運</option><option>尚未確定</option></select></div>
+                <div class="field full"><label for="motivation">參訓動機</label><textarea id="motivation" name="motivation" placeholder="請簡述你為什麼想參加，以及希望完訓後投入的工作方向。"></textarea></div>
+              </div>
+              <button class="btn btn-primary" type="submit" style="width:100%; margin-top:4px;">送出意向登記</button>
+              <div class="success" id="successMsg">已收到示範送出動作。正式上線時請改接 Google 表單或後端 API。</div>
+              <p class="submit-note">個資告知：本表單蒐集之姓名、聯絡方式、學經歷與參訓意願，僅用於本課程招生、聯繫、徵選與就業媒合相關作業。正式上線前請依校方個資告知範本補齊。</p>
+            </form>
+          </div>
+        </div>
+
+        <div class="embed-placeholder" style="margin-top:18px;">
+          <div>
+            <strong style="color:var(--text); font-size:20px;">Google 表單嵌入區</strong><br>
+            若已建立正式報名 Google Form，可將 iframe 貼到此處取代本區塊；或保留上方表單並串接後端。
+            <br><code>&lt;iframe src="你的 Google Form 連結"&gt;&lt;/iframe&gt;</code>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <b>AI 智慧行銷與商業應用實戰養成班</b><br>
+        115年度強化服務業人才韌性計畫｜青年 AI 實戰養成班<br>
+        申請單位：國立臺中科技大學｜執行單位：創新創業教學及產研辦公室
+      </div>
+      <div>
+        <b>聯絡資訊</b><br>
+        計畫聯絡人：楊先生｜04-22196475｜pj0225@nutc.edu.tw<br>
+        地址：臺中市北區三民路三段129號
+      </div>
+    </div>
+  </footer>
+
+  <div class="float-cta" aria-label="快速操作">
+    <a class="float-secondary" href="#faq">FAQ</a>
+    <a class="float-primary" href="#register">我要報名</a>
+  </div>
+
+  <div class="modal" id="syllabusModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-panel">
+      <div class="modal-head">
+        <h3 id="modalTitle">完整課綱清單</h3>
+        <button class="close-btn" type="button" data-close-modal aria-label="關閉">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="muted" style="margin-bottom:18px;">以下為網站版摘要課綱，可依正式核定課表更新授課日期、師資與教室。</p>
+        <div class="syllabus-list">
+          <div class="syllabus-row"><small>階段一</small><b>AI 資訊安全與生成式 AI 倫理實務</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>ESG 永續經營與服務業人才管理</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>生成式 AI 應用入門：Gemini 與 ChatGPT 職場實務</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>iPAS AI 應用規劃師認證輔導班</b><span>16h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>AI 商品視覺設計與影像優化實務</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>AI 銷售文案生成與品牌內容設計</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>AI 廣告素材生成與 Meta 精準投放</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>AI 社群經營與顧客互動策略</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>AI × Excel 基礎實戰：PDF / 圖片擷取與 Excel 資料庫</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>NotebookLM 與 Power BI 報表</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>GA4 數位顧客行為分析實務</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>AI 智慧物流倉儲作業實踐</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>AI 商業數據分析與決策應用</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段一</small><b>AI 智慧銷售流程與門市營運管理</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段二</small><b>AI Agent 商業應用與客服知識庫建置</b><span>24h</span></div>
+          <div class="syllabus-row"><small>階段二</small><b>AI 創意行銷、品牌內容與短影音實戰</b><span>24h</span></div>
+          <div class="syllabus-row"><small>階段二</small><b>商業數據分析、智慧銷售與門市營運決策</b><span>32h</span></div>
+          <div class="syllabus-row"><small>階段二</small><b>企業 AI 智慧銷售專題實作（一）市場與顧客分析</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段二</small><b>企業 AI 智慧銷售專題實作（二）行銷與內容應用</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段二</small><b>企業 AI 智慧銷售專題實作（三）消費行為數據分析</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段二</small><b>企業 AI 智慧銷售專題實作（四）門市營運管理決策</b><span>8h</span></div>
+          <div class="syllabus-row"><small>階段二</small><b>企業 AI 智慧銷售專題實作（五）成果發表與就業媒合</b><span>8h</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menuBtn = document.querySelector('#menuBtn');
+    const navLinks = document.querySelector('#navLinks');
+    menuBtn?.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const links = [...document.querySelectorAll('.links a[href^="#"]')];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+        }
+      });
+    }, { rootMargin: '-38% 0px -52% 0px', threshold: 0 });
+    sections.forEach(section => observer.observe(section));
+
+    const countEls = document.querySelectorAll('[data-count]');
+    const countObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.count);
+        const duration = 900;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const value = Math.floor(progress * target);
+          el.textContent = value.toLocaleString('zh-TW');
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target.toLocaleString('zh-TW');
+        };
+        requestAnimationFrame(step);
+        obs.unobserve(el);
+      });
+    }, { threshold: .6 });
+    countEls.forEach(el => countObserver.observe(el));
+
+    const targetDate = new Date('2026-07-01T09:00:00+08:00').getTime();
+    const d = document.querySelector('#d');
+    const h = document.querySelector('#h');
+    const m = document.querySelector('#m');
+    const s = document.querySelector('#s');
+    function updateCountdown() {
+      const diff = Math.max(0, targetDate - Date.now());
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+      d.textContent = days;
+      h.textContent = String(hours).padStart(2, '0');
+      m.textContent = String(mins).padStart(2, '0');
+      s.textContent = String(secs).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        item.classList.toggle('open');
+        btn.querySelector('span:last-child').textContent = item.classList.contains('open') ? '－' : '＋';
+      });
+    });
+
+    const modal = document.querySelector('#syllabusModal');
+    document.querySelectorAll('[data-open-modal]').forEach(btn => btn.addEventListener('click', () => modal.classList.add('open')));
+    document.querySelector('[data-close-modal]')?.addEventListener('click', () => modal.classList.remove('open'));
+    modal?.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
+
+    document.querySelector('#leadForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.querySelector('#successMsg').style.display = 'block';
+      e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+</body>
+</html>

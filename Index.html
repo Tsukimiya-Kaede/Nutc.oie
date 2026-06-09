@@ -360,6 +360,32 @@
     .stat strong { font-size: clamp(26px, 4vw, 44px); letter-spacing: -.04em; }
     .stat span { display: block; color: var(--muted); margin-top: 6px; font-size: 13px; }
 
+    .hero-benefits {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .hero-benefit {
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(247, 200, 115, .16), rgba(62, 231, 216, .10));
+      border: 1px solid rgba(247, 200, 115, .24);
+    }
+    .hero-benefit strong {
+      display: block;
+      color: var(--gold-2);
+      font-size: 22px;
+      font-weight: 1000;
+      margin-bottom: 8px;
+    }
+    .hero-benefit span {
+      display: block;
+      color: #d9e7f8;
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
     section { padding: 92px 0; position: relative; }
     .section-head {
       display: grid;
@@ -540,6 +566,72 @@
     .module b { display: block; margin-bottom: 4px; }
     .module span { color: var(--muted); line-height: 1.55; font-size: 14px; }
 
+    .course-details {
+      margin-top: 28px;
+      display: grid;
+      gap: 14px;
+    }
+    .course-stage-title {
+      margin: 28px 0 6px;
+      color: var(--gold-2);
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+    .course-detail {
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .065);
+      overflow: hidden;
+    }
+    .course-detail summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 20px;
+      cursor: pointer;
+      list-style: none;
+    }
+    .course-detail summary::-webkit-details-marker { display: none; }
+    .course-detail summary b {
+      display: block;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    .course-detail summary span {
+      color: var(--gold-2);
+      font-weight: 950;
+      white-space: nowrap;
+    }
+    .course-body {
+      display: grid;
+      gap: 14px;
+      padding: 0 20px 20px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .course-meta span {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(62, 231, 216, .10);
+      border: 1px solid rgba(62, 231, 216, .18);
+      color: #dbefff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .teacher-profile {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, .18);
+      border: 1px solid rgba(255, 255, 255, .10);
+    }
+    .teacher-profile b { color: var(--text); }
+
     .company-strip {
       display: flex;
       flex-wrap: wrap;
@@ -606,45 +698,6 @@
       line-height: 1.75;
     }
     .faq-item.open .faq-a { max-height: 220px; }
-
-    .register-wrap {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-    .form-card {
-      border: 1px solid rgba(62, 231, 216, .18);
-      border-radius: 30px;
-      background: linear-gradient(180deg, rgba(62, 231, 216, .10), rgba(255, 255, 255, .06));
-      padding: 24px;
-    }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .field { display: grid; gap: 7px; margin-bottom: 12px; }
-    .field.full { grid-column: 1 / -1; }
-    label { color: #dce7f7; font-weight: 850; font-size: 13px; }
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid rgba(255, 255, 255, .14);
-      border-radius: 16px;
-      background: rgba(0, 0, 0, .20);
-      color: var(--text);
-      padding: 13px 14px;
-      outline: none;
-    }
-    textarea { min-height: 112px; resize: vertical; }
-    input:focus, select:focus, textarea:focus { border-color: rgba(62, 231, 216, .55); }
-    .submit-note { color: var(--muted); font-size: 13px; line-height: 1.65; margin-top: 12px; }
-    .success {
-      display: none;
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      color: var(--green);
-      background: rgba(132, 242, 154, .10);
-      border: 1px solid rgba(132, 242, 154, .18);
-      font-weight: 900;
-    }
 
     .form-section {
       width: min(var(--max), calc(100% - 40px));
@@ -767,7 +820,7 @@
     .syllabus-row span { color: var(--gold-2); text-align: right; font-weight: 950; }
 
     @media (max-width: 980px) {
-      .hero-grid, .section-head, .check-layout, .register-wrap, .footer-grid { grid-template-columns: 1fr; }
+      .hero-grid, .section-head, .check-layout, .footer-grid { grid-template-columns: 1fr; }
       .stats, .path { grid-template-columns: repeat(2, 1fr); }
       .grid-3, .grid-4, .curriculum, .schedule-card { grid-template-columns: 1fr; }
       .links {
@@ -792,7 +845,7 @@
       .container { width: min(100% - 26px, var(--max)); }
       .form-section { width: min(100% - 26px, var(--max)); }
       .hero { padding-top: 48px; }
-      .stats, .grid-2, .compare, .form-grid { grid-template-columns: 1fr; }
+      .stats, .grid-2, .compare, .hero-benefits { grid-template-columns: 1fr; }
       .countdown-grid { grid-template-columns: repeat(2, 1fr); }
       .path { grid-template-columns: 1fr; }
       .float-cta { left: 12px; right: 12px; justify-content: center; }
@@ -831,7 +884,7 @@
           <div class="eyebrow"><span class="pulse"></span> 115年度強化服務業人才韌性計畫</div>
           <h1>不是只學 AI，<br><span class="gradient-text">是把 AI 做成你的職場作品。</span></h1>
           <p class="hero-lead">
-            AI 智慧行銷與商業應用實戰養成班，聚焦零售、餐飲與服務業場域。從生成式 AI、數位行銷、數據分析到企業專題實作，陪你把工具能力轉成可展示、可媒合、可落地的實戰成果。
+            AI 智慧行銷與商業應用實戰養成班，聚焦零售、餐飲與服務業場域。從生成式 AI、數位行銷、數據分析到企業專題實作，陪你把工具能力轉成可展示、可媒合、可落地的實戰成果。完成兩階段培訓並符合規定者，可請領新臺幣 5 萬元獎勵，並輔導考取 iPAS AI 應用規劃師認證證照。
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#signup">我要報名 →</a>
@@ -843,6 +896,10 @@
             <div class="stat"><strong data-count="64">0</strong><span>總培訓名額</span></div>
             <div class="stat"><strong data-count="75">0</strong><span>% 就業媒合目標</span></div>
             <div class="stat"><strong data-count="2">0</strong><span>班次招生</span></div>
+          </div>
+          <div class="hero-benefits" aria-label="培訓獎勵與證照輔導">
+            <div class="hero-benefit"><strong>5 萬元完訓獎勵</strong><span>完成兩階段培訓並符合出席、評量與計畫規定者，可請領新臺幣 5 萬元獎勵。</span></div>
+            <div class="hero-benefit"><strong>iPAS 認證輔導</strong><span>課程納入 iPAS AI 應用規劃師認證輔導，協助建立 AI 導入規劃與職場應用能力。</span></div>
           </div>
         </div>
 
@@ -859,6 +916,8 @@
             <div class="meta-item"><span class="meta-icon">📍</span><div><b>上課地點</b><span>國立臺中科技大學｜臺中市北區三民路三段129號</span></div></div>
             <div class="meta-item"><span class="meta-icon">👥</span><div><b>招生對象</b><span>18–35 歲本國籍青年；大專校院副學士以上；應屆畢業生或待業者。</span></div></div>
             <div class="meta-item"><span class="meta-icon">🧭</span><div><b>訓練方向</b><span>AI 行銷素材、AI Agent 客服、Power BI 數據儀表板、智慧銷售與門市營運。</span></div></div>
+            <div class="meta-item"><span class="meta-icon">🏅</span><div><b>完訓獎勵</b><span>完成兩階段培訓且符合規定者，可請領新臺幣 5 萬元獎勵。</span></div></div>
+            <div class="meta-item"><span class="meta-icon">🎓</span><div><b>證照輔導</b><span>輔導考取 iPAS AI 應用規劃師認證證照。</span></div></div>
             <div class="meta-item"><span class="meta-icon">💬</span><div><b>聯絡窗口</b><span>楊先生｜04-22196475｜pj0225@nutc.edu.tw</span></div></div>
           </div>
 
@@ -970,13 +1029,13 @@
             <div class="section-kicker">CURRICULUM</div>
             <h2>120 小時打底，120 小時進企業題目實戰。</h2>
           </div>
-          <p>課程分為「次產業 AI 應用與職場核心素養」與「企業專題實作與數據決策」兩階段，從工具能力一路推進到企業痛點解決方案。</p>
+          <p>課程分為「次產業 AI 應用與職場核心素養」與「企業專題實作與數據決策」兩階段，從工具能力一路推進到企業痛點解決方案；完成兩階段培訓並符合規定者，可請領新臺幣 5 萬元獎勵，並接受 iPAS AI 應用規劃師認證輔導。</p>
         </div>
 
         <div class="curriculum">
           <article class="phase">
             <div class="phase-head">
-              <div><h3>第一階段｜AI 工具與數位行銷基礎</h3><p class="muted">建立 AI 基礎知能、工具操作、數位內容與數據應用能力。</p></div>
+              <div><h3>第一階段｜AI 工具與數位行銷基礎</h3><p class="muted">建立 AI 基礎知能、工具操作、數位內容與數據應用能力，並輔導準備 iPAS AI 應用規劃師認證。</p></div>
               <span class="phase-label">120 hr</span>
             </div>
             <div class="modules">
@@ -990,7 +1049,7 @@
 
           <article class="phase">
             <div class="phase-head">
-              <div><h3>第二階段｜企業專題實作與數據決策</h3><p class="muted">以合作企業命題為核心，完成可展示的 AI 導入成果。</p></div>
+              <div><h3>第二階段｜企業專題實作與數據決策</h3><p class="muted">以合作企業命題為核心，完成可展示的 AI 導入成果；兩階段培訓完成且符合規定者，可請領新臺幣 5 萬元獎勵。</p></div>
               <span class="phase-label">120 hr</span>
             </div>
             <div class="modules">
@@ -1000,6 +1059,10 @@
               <div class="module"><span class="module-time">40h</span><div><b>企業 AI 智慧銷售專題實作</b><span>市場與顧客分析、行銷內容應用、消費行為分析、門市營運決策、成果發表與就業媒合。</span></div></div>
             </div>
           </article>
+        </div>
+
+        <div class="course-details" id="courseDetails" aria-label="完整課綱與講師資訊">
+          <h3 class="course-stage-title">完整課綱與師資</h3>
         </div>
 
         <div class="cta-row" style="justify-content:center; margin-top:26px;">
@@ -1088,7 +1151,6 @@
             <div class="section-kicker">FAQ</div>
             <h2>報名前，先把常見問題看完。</h2>
           </div>
-          <p>以下內容可依正式招生簡章再微調，例如補助、說明會連結、正式報名平台與錄取通知流程。</p>
         </div>
 
         <div class="faq">
@@ -1113,53 +1175,6 @@
             <div class="faq-a"><p>不是。本班採審核制，送出資料後將進行資格初審與徵選面試，錄取名單將另行通知。若正取未完成報到，將依備取順序遞補。</p></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="register">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">REGISTRATION</div>
-            <h2>填寫報名 / 意向登記，我們將聯繫你。</h2>
-          </div>
-          <p>此區塊可直接改成 Google 表單 iframe，或串接學校正式報名系統。正式報名資料、簡章附件與個資告知文字，建議待主辦單位確認後替換。</p>
-        </div>
-
-        <div class="register-wrap">
-          <article class="card">
-            <div class="num">報名流程</div>
-            <h3>兩步驟完成申請</h3>
-            <ul>
-              <li><b>STEP 1｜填寫意向登記：</b>留下基本資料、班別意願、學經歷與參訓動機。</li>
-              <li><b>STEP 2｜資格審查與面試：</b>依年齡、學歷、身分與企業職缺適配度進行徵選。</li>
-              <li><b>STEP 3｜錄取通知與報到：</b>以 Email、電話或簡訊通知正備取與報到資料。</li>
-              <li><b>STEP 4｜開課與分組：</b>完成前測後進入 AI 工具課程與企業專題實作。</li>
-            </ul>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="mailto:pj0225@nutc.edu.tw?subject=青年AI實戰養成班報名諮詢">寄信詢問</a>
-              <a class="btn btn-secondary" href="tel:+886422196475">撥打電話</a>
-            </div>
-          </article>
-
-          <div class="form-card">
-            <form id="leadForm">
-              <div class="form-grid">
-                <div class="field"><label for="name">姓名</label><input id="name" name="name" type="text" placeholder="請輸入姓名" required></div>
-                <div class="field"><label for="phone">手機</label><input id="phone" name="phone" type="tel" placeholder="09xx-xxx-xxx" required></div>
-                <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="example@email.com" required></div>
-                <div class="field"><label for="class">欲報名班別</label><select id="class" name="class" required><option value="">請選擇</option><option>第 1 班｜2026/07/01 開課</option><option>第 2 班｜2026/07/15 開課</option><option>兩班皆可</option></select></div>
-                <div class="field"><label for="status">目前身分</label><select id="status" name="status" required><option value="">請選擇</option><option>應屆畢業生</option><option>待業者</option><option>其他，需進一步確認資格</option></select></div>
-                <div class="field"><label for="field">感興趣方向</label><select id="field" name="field"><option>AI 行銷內容</option><option>AI Agent 客服</option><option>Power BI 數據分析</option><option>智慧銷售與門市營運</option><option>尚未確定</option></select></div>
-                <div class="field full"><label for="motivation">參訓動機</label><textarea id="motivation" name="motivation" placeholder="請簡述你為什麼想參加，以及希望完訓後投入的工作方向。"></textarea></div>
-              </div>
-              <button class="btn btn-primary" type="submit" style="width:100%; margin-top:4px;">送出意向登記</button>
-              <div class="success" id="successMsg">已收到示範送出動作。正式上線時請改接 Google 表單或後端 API。</div>
-              <p class="submit-note">個資告知：本表單蒐集之姓名、聯絡方式、學經歷與參訓意願，僅用於本課程招生、聯繫、徵選與就業媒合相關作業。正式上線前請依校方個資告知範本補齊。</p>
-            </form>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -1237,6 +1252,70 @@
   </div>
 
   <script>
+    const courseDetailsData = [
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI 資訊安全與生成式 AI 倫理實務', hours: '8h', venue: '國立臺中科技大學｜電腦教室／一般教室', outline: '資訊安全基本概念、AI 工具資料外洩風險、個資保護與企業資料使用規範、AI 生成內容著作權與引用倫理、安全使用 AI 的職場行為準則。', teacher: '陳俊成', specialty: '系統動態學、行銷／策略管理、科技與生產力管理、科技導向服務創新。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'ESG 永續經營與服務業人才管理', hours: '8h', venue: '國立臺中科技大學｜電腦教室／一般教室', outline: 'ESG 基本概念與趨勢、企業永續與人才策略、綠色職場與企業責任、ESG 在人資管理的應用、服務業實務案例。', teacher: '邱哲煌', specialty: '碳盤查、碳足跡、碳中和、能源管理、永續旅遊、機器人與自動化流程。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: '生成式 AI 應用入門：Gemini 與 ChatGPT 職場實務', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI 工具概念與職場情境、ChatGPT 操作與提示詞設計、文書處理與摘要整理、AI 提升工作效率技巧、資訊判讀與內容正確性檢核。', teacher: '陳俊智', specialty: '人工智慧應用、機器學習、數據分析、能源經濟、跨境電商。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'iPAS AI 應用規劃師認證輔導班', hours: '16h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI 定義、分類與服務業應用情境；資料來源、資料整理與分析流程；機器學習、鑑別式 AI 與生成式 AI 差異；No Code／Low Code、提示詞應用、企業導入需求評估與風險管理。', teacher: '趙裕彬', specialty: 'AI 工具運用、ESG 永續發展、企業診斷與決策分析、TTQS 與人力資源管理、職能模型建構、組織轉型與再造。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI 商品視覺設計與影像優化實務', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI 影像生成工具、修圖與影像優化、品牌視覺風格設計、商品圖與廣告素材應用、視覺內容實作與優化。', teacher: '曾國軒', specialty: 'Canva、Figma UI/UX、AIGC 生成設計、新媒體廣告設計、文案撰寫、簡報提案、Adobe Illustrator／Photoshop。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI 銷售文案生成與品牌內容設計', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '商品文案與廣告文案生成、社群貼文與 EDM 內容設計、AI 輔助銷售話術與客服應答。', teacher: '曾國軒', specialty: 'Canva、Figma UI/UX、AIGC 生成設計、新媒體廣告設計、文案撰寫、簡報提案、Adobe Illustrator／Photoshop。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI 廣告素材生成與 Meta 精準投放', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'Meta 廣告平台邏輯、AI 生成廣告圖文標題與文案、素材設計與轉換技巧、受眾設定與分群投放、廣告成效分析與優化。', teacher: '曾國軒', specialty: 'Canva、Figma UI/UX、AIGC 生成設計、新媒體廣告設計、文案撰寫、簡報提案、Adobe Illustrator／Photoshop。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI 社群經營與顧客互動策略', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '社群平台經營策略、互動內容規劃、顧客關係維護與會員溝通、社群成效指標判讀。', teacher: '曾國軒', specialty: 'Canva、Figma UI/UX、AIGC 生成設計、新媒體廣告設計、文案撰寫、簡報提案、Adobe Illustrator／Photoshop。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI × Excel 基礎實戰：PDF／圖片擷取與 AI 生成 Excel 資料庫', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI 文件資料擷取與 Excel 資料庫、企業文件擷取自動化、PDF 與圖片資料擷取、AI 欄位自動擷取至 Excel、匯入資料正確性與勾稽。', teacher: '陳俊成', specialty: '系統動態學、行銷／策略管理、科技與生產力管理、科技導向服務創新。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'Google NotebookLM 與 Power BI 報表', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI 輔助資料整理、分類與摘要、生成分析洞察、Power BI 報表優化與自動更新、智慧化決策儀表板、行銷與銷售數據案例。', teacher: '陳俊成', specialty: '系統動態學、行銷／策略管理、科技與生產力管理、科技導向服務創新。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'GA4 數位顧客行為分析實務', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'GA4 架構與指標、流量事件與轉換、使用者來源與轉換路徑、行銷成效追蹤、基本報表建立與數據洞察、行銷策略優化。', teacher: '陳俊成', specialty: '系統動態學、行銷／策略管理、科技與生產力管理、科技導向服務創新。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI 智慧物流倉儲作業實踐', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI 於物流倉儲作業情境、商品流動與庫存週轉分析、缺貨與滯銷風險判讀、智慧倉儲資料欄位、路線安排與配送效率優化案例。', teacher: '許金城', specialty: 'AI 應用與智慧自動化技術開發、雲端商務管理、內部管理系統開發。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI 商業數據分析與決策應用', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI 在商業分析中的角色、趨勢預測與資料解讀、自動生成分析報告與建議、AI 輔助決策準確性、企業應用案例分析。', teacher: '陳俊智', specialty: '人工智慧應用、機器學習、數據分析、能源經濟、跨境電商。' },
+      { stage: '第一階段：次產業 AI 應用課程', title: 'AI 智慧銷售流程與門市營運管理', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '訂單、庫存與出貨流程概念、ERP 與營運管理基礎、銷售流程優化與跨部門協作。', teacher: '廖祿文', specialty: '生產規劃與控制、電子化與網路行銷、ERP 與智慧營運管理。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：AI 智慧伴手禮推薦與行銷助手', hours: '2h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦伴手禮推薦、商品文案、社群內容與消費者偏好分析。', teacher: '賴佳臨', specialty: '顧客服務與客訴處理、門市營運管理、食品與伴手禮產業經營、品牌行銷、AI 社群內容生成、AI 數據分析與智慧營運。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：AI 智慧旅遊導覽與客服系統', hours: '1h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦旅宿客服、旅遊推薦、常見問答資料庫與顧客體驗。', teacher: '陳淑君／蔡佳君', specialty: '旅宿服務業人力配置、教育訓練、品牌推廣、AI 數位工具與生成式 AI 應用、HR 數據分析與流程優化。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：AI 銷售預測與庫存管理系統', hours: '1h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦節慶銷售資料、熱門商品預測、庫存管理與 AI 行銷內容。', teacher: '吳佩娜', specialty: '食品產業經營管理、品牌行銷、供應鏈整合、AI 數位轉型、數位行銷分析、數據決策工具應用。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：AI 創意行銷素材生成與團購系統延伸應用實務', hours: '1h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦團購系統、點餐 APP、零售解決方案與 AI 生成推廣素材。', teacher: '王國濠', specialty: '自助結帳 Kiosk、POS 系統開發、AI 基礎課程、Prompt Engineering、零售與餐飲系統開發。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：AI 解決方案導入與整合：軟體專案需求分析與自動化測試', hours: '3h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦軟體專案需求分析、AI coding、流程整合與自動化測試。', teacher: '廖兆晟', specialty: 'AI coding 實務、AI 基礎課程、Prompt Engineering、智慧財會系統與軟體專案管理。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：AI 代理協作：消費行為洞察與預測', hours: '3h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦 AI 代理協作、消費行為資料、顧客洞察與預測。', teacher: '林壽山', specialty: 'LLM 網站架構設計、AI 授課、Prompt Engineering、機器學習基礎、AI 應用規劃與數據分析。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：傳產雇主品牌 AI 影音行銷', hours: '1h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦企業形象短影音、多語系產品介紹、雇主品牌與人才招募行銷。', teacher: '洪國哲', specialty: '木工機械開發、集塵設備設計、產品開發管理、ODM 產品規劃。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：商業數據分析', hours: '1h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦銷售、客戶、通路與平台營運資料整理，建立分析報告與儀表板。', teacher: '蘇宏仁', specialty: '品牌行銷、平台營運、商業服務與數據化營運管理。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：國際電商導購企劃', hours: '1h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦跨語系商品服務介紹、電商導購文案、社群貼文與轉換優化。', teacher: '葉晉玉', specialty: '教育服務經營、文教服務、國際電商導購、跨語系內容與社群推廣。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：AI 行銷 Agent 養成計畫', hours: '1h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦 AI 行銷 Agent、社群回覆、廣告成效整理、顧客分眾與再行銷建議。', teacher: '鐘基啟', specialty: '營運／通路／行銷策略、品牌與商品策略、電商營運、數位行銷、MarTech、創新商業模式。' },
+      { stage: '第二階段：企業專題實作', title: '專題主題：PropTech 智能賞屋行銷', hours: '1h', venue: '國立臺中科技大學｜電腦教室', outline: '學員分組、企業介紹、企業點題說明，聚焦生成式 AI、VR、空間視覺化、智能賞屋導購與數位推廣方案。', teacher: '陳昱霖', specialty: 'AI 設計工作流調教、生成式 AI 視覺應用、空間科技與智能設計。' },
+      { stage: '第二階段：企業專題實作', title: 'Canva AI 品牌視覺與商業設計實戰', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: 'Canva AI 工具操作、行銷素材製作、品牌視覺一致性、快速產出高品質設計內容、社群與電商案例操作。', teacher: '曾國軒', specialty: 'Canva、Figma UI/UX、AIGC 生成設計、新媒體廣告設計、文案撰寫、簡報提案、Adobe Illustrator／Photoshop。' },
+      { stage: '第二階段：企業專題實作', title: 'AI 智慧關鍵字廣告投放實戰', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '關鍵字廣告概念與架構、AI 輔助關鍵字發想與文案生成、投放設定、CTR 與轉換率追蹤、案例操作與成效調整。', teacher: '曾國軒', specialty: 'Canva、Figma UI/UX、AIGC 生成設計、新媒體廣告設計、文案撰寫、簡報提案、Adobe Illustrator／Photoshop。' },
+      { stage: '第二階段：企業專題實作', title: 'AI 短影音拍攝剪輯與社群行銷實戰', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '手機拍攝技巧、剪輯節奏與影片吸引力、AI 輔助剪輯與特效、音效字幕與視覺強化、完整影音製作流程。', teacher: '曾國軒', specialty: 'Canva、Figma UI/UX、AIGC 生成設計、新媒體廣告設計、文案撰寫、簡報提案、Adobe Illustrator／Photoshop。' },
+      { stage: '第二階段：企業專題實作', title: 'AI 短影音直播銷售與轉單實戰', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '短影音導購與轉換邏輯、銷售型內容設計、AI 生成行銷腳本與銷售話術、平台演算法與曝光策略、案例分析與實作。', teacher: '曾國軒', specialty: 'Canva、Figma UI/UX、AIGC 生成設計、新媒體廣告設計、文案撰寫、簡報提案、Adobe Illustrator／Photoshop。' },
+      { stage: '第二階段：企業專題實作', title: 'AI Agent 資料收集', hours: '16h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI Agent 建置資料類型、客服情境盤點、ChatGPT 與 Gemini 整理非結構化資料、知識庫架構、資料清理與去識別化、AI Agent 資料收集表。', teacher: '羅康瑋', specialty: 'AI 工具導入、AI 輔助工作流程設計、AI 內容創作、AI 短影音腳本、AI 資料蒐集、市場調查、AI 客服與社群互動應用。' },
+      { stage: '第二階段：企業專題實作', title: 'AI Agent 商業應用', hours: '16h', venue: '國立臺中科技大學｜電腦教室', outline: 'AI Agent 與 Chatbot 差異、角色設定、提示詞設計、商業服務流程、情境模擬、成效評估指標、AI Agent 商業應用方案。', teacher: '羅康瑋', specialty: 'AI 工具導入、AI 輔助工作流程設計、AI 內容創作、AI 短影音腳本、AI 資料蒐集、市場調查、AI 客服與社群互動應用。' },
+      { stage: '第二階段：企業專題實作', title: '企業 AI 智慧銷售專題實作（一）：市場與顧客分析', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '商品與服務定位、目標客群分析、AI 工具導入規劃。', teacher: '陳美如', specialty: '電子商務、企業數位轉型、國際貿易與經營、企業專題實作輔導。' },
+      { stage: '第二階段：企業專題實作', title: '企業 AI 智慧銷售專題實作（二）：行銷與內容應用', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '依合作企業品牌定位、商品特色與目標客群，運用 AI 工具進行顧客輪廓分析，建立 AI 輔助行銷內容排程。', teacher: '陳美如', specialty: '電子商務、企業數位轉型、國際貿易與經營、企業專題實作輔導。' },
+      { stage: '第二階段：企業專題實作', title: '企業 AI 智慧銷售專題實作（三）：消費行為數據分析', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '行銷內容製作、顧客分群與數據應用、通路與銷售流程設計。', teacher: '陳美如', specialty: '電子商務、企業數位轉型、國際貿易與經營、企業專題實作輔導。' },
+      { stage: '第二階段：企業專題實作', title: '企業 AI 智慧銷售專題實作（四）：門市營運管理決策', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '分析合作企業門市營運流程、運用 AI 工具整理門市營運資料、依數據分析提出 AI 輔助決策建議。', teacher: '陳美如', specialty: '電子商務、企業數位轉型、國際貿易與經營、企業專題實作輔導。' },
+      { stage: '第二階段：企業專題實作', title: '企業 AI 智慧銷售專題實作（五）：成果發表與就業媒合', hours: '8h', venue: '國立臺中科技大學｜電腦教室', outline: '專題簡報製作、成果發表與口頭報告、業師講評與修正建議、就業媒合銜接。', teacher: '陳美如', specialty: '電子商務、企業數位轉型、國際貿易與經營、企業專題實作輔導。' }
+    ];
+
+    const courseDetails = document.querySelector('#courseDetails');
+    if (courseDetails) {
+      const escapeHtml = (value) => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+      const grouped = courseDetailsData.reduce((acc, course) => {
+        (acc[course.stage] ||= []).push(course);
+        return acc;
+      }, {});
+      courseDetails.innerHTML = '<h3 class="course-stage-title">完整課綱與師資</h3>' + Object.entries(grouped).map(([stage, courses]) => `
+        <h4 class="course-stage-title">${escapeHtml(stage)}</h4>
+        ${courses.map(course => `
+          <details class="course-detail">
+            <summary><b>${escapeHtml(course.title)}</b><span>${escapeHtml(course.hours)}</span></summary>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>地點：${escapeHtml(course.venue)}</span>
+                <span>講師：${escapeHtml(course.teacher)}</span>
+              </div>
+              <div><b>細節課綱：</b>${escapeHtml(course.outline)}</div>
+              <div class="teacher-profile"><b>講師簡介：</b>${escapeHtml(course.teacher)}｜${escapeHtml(course.specialty)}</div>
+            </div>
+          </details>
+        `).join('')}
+      `).join('');
+    }
+
     const menuBtn = document.querySelector('#menuBtn');
     const navLinks = document.querySelector('#navLinks');
     menuBtn?.addEventListener('click', () => navLinks.classList.toggle('open'));
@@ -1307,11 +1386,6 @@
     modal?.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
 
-    document.querySelector('#leadForm')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      document.querySelector('#successMsg').style.display = 'block';
-      e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
   </script>
 </body>
 </html>
